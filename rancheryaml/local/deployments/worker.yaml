@@ -1,0 +1,247 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "8"
+    field.cattle.io/creatorId: user-gh9b6
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-worker-worker
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/creatorId: {}
+        f:labels:
+          .: {}
+          f:cattle.io/creator: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:workload.user.cattle.io/workloadselector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:cattle.io/timestamp: {}
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:containers:
+              k:{"name":"worker"}:
+                .: {}
+                f:args: {}
+                f:env:
+                  .: {}
+                  k:{"name":"CELERY_BROKER_URL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"CORS_ORIGIN_ALLOW_ALL"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"DEBUG"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"DOMAIN"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"LOCAL_HOST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"POSTGRES_DB"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"POSTGRES_HOST"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"POSTGRES_PASSWORD"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"POSTGRES_USER"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"SECRET_KEY"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"USE_S3"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:securityContext:
+                  .: {}
+                  f:allowPrivilegeEscalation: {}
+                  f:privileged: {}
+                  f:readOnlyRootFilesystem: {}
+                  f:runAsNonRoot: {}
+                f:stdin: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:tty: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/app"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+                f:workingDir: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"vol1"}:
+                .: {}
+                f:hostPath:
+                  .: {}
+                  f:path: {}
+                  f:type: {}
+                f:name: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-08-28T20:25:28Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: k3s
+    operation: Update
+    time: "2020-08-28T20:25:32Z"
+  name: worker
+  selfLink: /apis/apps/v1/namespaces/worker/deployments/worker
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-worker-worker
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-08-28T20:25:28Z"
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-worker-worker
+    spec:
+      containers:
+      - args:
+        - celery
+        - -A
+        - testz
+        - worker
+        - --loglevel=info
+        env:
+        - name: CELERY_BROKER_URL
+          value: amqp://user:[RABBITMQPASSWORDHERE]@rabbitmq//
+        - name: CORS_ORIGIN_ALLOW_ALL
+          value: "True"
+        - name: DEBUG
+          value: "TRUE"
+        - name: DOMAIN
+          value: localhost
+        - name: LOCAL_HOST
+          value: "True"
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_HOST
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_USER
+          value: postgres
+        - name: SECRET_KEY
+          value: SDFASDCDSAFFADS
+        - name: USE_S3
+          value: "False"
+        image: backend:latest
+        imagePullPolicy: IfNotPresent
+        name: worker
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /app
+          name: vol1
+        workingDir: /app
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /src
+          type: ""
+        name: vol1
+status: {}

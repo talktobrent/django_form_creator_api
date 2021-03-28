@@ -1,0 +1,233 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    field.cattle.io/creatorId: u-c9zl9
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"4","field.cattle.io/creatorId":"u-c9zl9"},"creationTimestamp":null,"generation":1,"labels":{"cattle.io/creator":"norman","workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"},"managedFields":[{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:field.cattle.io/creatorId":{}},"f:labels":{".":{},"f:cattle.io/creator":{},"f:workload.user.cattle.io/workloadselector":{}}},"f:spec":{"f:progressDeadlineSeconds":{},"f:replicas":{},"f:revisionHistoryLimit":{},"f:selector":{"f:matchLabels":{".":{},"f:workload.user.cattle.io/workloadselector":{}}},"f:strategy":{"f:rollingUpdate":{".":{},"f:maxSurge":{},"f:maxUnavailable":{}},"f:type":{}},"f:template":{"f:metadata":{"f:annotations":{},"f:labels":{".":{},"f:workload.user.cattle.io/workloadselector":{}}},"f:spec":{"f:containers":{"k:{\"name\":\"elasticsearch\"}":{".":{},"f:env":{".":{},"k:{\"name\":\"ES_JAVA_OPTS\"}":{".":{},"f:name":{},"f:value":{}},"k:{\"name\":\"bootstrap.memory_lock\"}":{".":{},"f:name":{},"f:value":{}},"k:{\"name\":\"cluster.name\"}":{".":{},"f:name":{},"f:value":{}},"k:{\"name\":\"discovery.type\"}":{".":{},"f:name":{},"f:value":{}},"k:{\"name\":\"node.name\"}":{".":{},"f:name":{},"f:value":{}}},"f:image":{},"f:imagePullPolicy":{},"f:name":{},"f:ports":{".":{},"k:{\"containerPort\":9200,\"protocol\":\"TCP\"}":{".":{},"f:containerPort":{},"f:name":{},"f:protocol":{}}},"f:resources":{".":{},"f:limits":{".":{},"f:cpu":{},"f:memory":{}},"f:requests":{".":{},"f:cpu":{},"f:memory":{}}},"f:securityContext":{".":{},"f:allowPrivilegeEscalation":{},"f:privileged":{},"f:readOnlyRootFilesystem":{},"f:runAsNonRoot":{}},"f:stdin":{},"f:terminationMessagePath":{},"f:terminationMessagePolicy":{},"f:tty":{},"f:volumeMounts":{".":{},"k:{\"mountPath\":\"/usr/share/elasticsearch/data\"}":{".":{},"f:mountPath":{},"f:name":{}}}}},"f:dnsPolicy":{},"f:restartPolicy":{},"f:schedulerName":{},"f:securityContext":{},"f:terminationGracePeriodSeconds":{},"f:volumes":{".":{},"k:{\"name\":\"elasticsearch-data\"}":{".":{},"f:hostPath":{},"f:name":{}}}}}}},"manager":"kubectl","operation":"Update","time":"2020-08-24T16:37:09Z"},{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{"f:kubectl.kubernetes.io/last-applied-configuration":{}}},"f:spec":{"f:template":{"f:metadata":{"f:annotations":{"f:cattle.io/timestamp":{},"f:field.cattle.io/ports":{}}},"f:spec":{"f:volumes":{"k:{\"name\":\"elasticsearch-data\"}":{"f:hostPath":{"f:path":{},"f:type":{}}}}}}}},"manager":"Go-http-client","operation":"Update","time":"2020-08-24T16:48:30Z"},{"apiVersion":"apps/v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{"f:deployment.kubernetes.io/revision":{}}},"f:status":{"f:availableReplicas":{},"f:conditions":{".":{},"k:{\"type\":\"Available\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:message":{},"f:reason":{},"f:status":{},"f:type":{}},"k:{\"type\":\"Progressing\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:message":{},"f:reason":{},"f:status":{},"f:type":{}}},"f:observedGeneration":{},"f:readyReplicas":{},"f:replicas":{},"f:updatedReplicas":{}}},"manager":"k3s","operation":"Update","time":"2020-08-24T18:59:26Z"}],"name":"elasticsearch","namespace":"elasticsearch","selfLink":"/apis/apps/v1/namespaces/default/deployments/elasticsearch"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"annotations":{"cattle.io/timestamp":"2020-08-24T16:48:30Z","field.cattle.io/ports":"[[{\"containerPort\":9200,\"dnsName\":\"elasticsearch\",\"kind\":\"ClusterIP\",\"name\":\"es\",\"protocol\":\"TCP\"}]]"},"creationTimestamp":null,"labels":{"workload.user.cattle.io/workloadselector":"deployment-default-elasticsearch"}},"spec":{"containers":[{"env":[{"name":"ES_JAVA_OPTS","value":"-Xms128m -Xmx128m"},{"name":"bootstrap.memory_lock","value":"true"},{"name":"cluster.name","value":"elasticsearch"},{"name":"discovery.type","value":"single-node"},{"name":"node.name","value":"kifarunix-demo-es"}],"image":"docker.elastic.co/elasticsearch/elasticsearch:6.4.1","imagePullPolicy":"IfNotPresent","name":"elasticsearch","ports":[{"containerPort":9200,"name":"es","protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"512Mi"},"requests":{"cpu":"250m","memory":"512Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"privileged":false,"readOnlyRootFilesystem":false,"runAsNonRoot":false},"stdin":true,"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","tty":true,"volumeMounts":[{"mountPath":"/usr/share/elasticsearch/data","name":"elasticsearch-data"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"hostPath":{"path":"/elasticsearch/data","type":"DirectoryOrCreate"},"name":"elasticsearch-data"}]}}},"status":{}}
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:field.cattle.io/creatorId: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:cattle.io/creator: {}
+          f:workload.user.cattle.io/workloadselector: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:workload.user.cattle.io/workloadselector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:annotations:
+              .: {}
+              f:cattle.io/timestamp: {}
+              f:field.cattle.io/ports: {}
+            f:labels:
+              .: {}
+              f:workload.user.cattle.io/workloadselector: {}
+          f:spec:
+            f:containers:
+              k:{"name":"elasticsearch"}:
+                .: {}
+                f:env:
+                  .: {}
+                  k:{"name":"ES_JAVA_OPTS"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"bootstrap.memory_lock"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"cluster.name"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"discovery.type"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                  k:{"name":"node.name"}:
+                    .: {}
+                    f:name: {}
+                    f:value: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:ports:
+                  .: {}
+                  k:{"containerPort":9200,"protocol":"TCP"}:
+                    .: {}
+                    f:containerPort: {}
+                    f:name: {}
+                    f:protocol: {}
+                f:resources:
+                  .: {}
+                  f:limits:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                  f:requests:
+                    .: {}
+                    f:cpu: {}
+                    f:memory: {}
+                f:securityContext:
+                  .: {}
+                  f:allowPrivilegeEscalation: {}
+                  f:privileged: {}
+                  f:readOnlyRootFilesystem: {}
+                  f:runAsNonRoot: {}
+                f:stdin: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+                f:tty: {}
+                f:volumeMounts:
+                  .: {}
+                  k:{"mountPath":"/usr/share/elasticsearch/data"}:
+                    .: {}
+                    f:mountPath: {}
+                    f:name: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+            f:volumes:
+              .: {}
+              k:{"name":"elasticsearch-data"}:
+                .: {}
+                f:hostPath:
+                  .: {}
+                  f:path: {}
+                  f:type: {}
+                f:name: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-08-26T20:18:56Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: k3s
+    operation: Update
+    time: "2020-08-26T20:18:57Z"
+  name: elasticsearch
+  selfLink: /apis/apps/v1/namespaces/elasticsearch/deployments/elasticsearch
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-08-24T16:48:30Z"
+        field.cattle.io/ports: '[[{"containerPort":9200,"dnsName":"elasticsearch","kind":"ClusterIP","name":"es","protocol":"TCP"}]]'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-elasticsearch
+    spec:
+      containers:
+      - env:
+        - name: ES_JAVA_OPTS
+          value: -Xms128m -Xmx128m
+        - name: bootstrap.memory_lock
+          value: "true"
+        - name: cluster.name
+          value: elasticsearch
+        - name: discovery.type
+          value: single-node
+        - name: node.name
+          value: kifarunix-demo-es
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+        imagePullPolicy: IfNotPresent
+        name: elasticsearch
+        ports:
+        - containerPort: 9200
+          name: es
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: elasticsearch-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /elasticsearch/data
+          type: DirectoryOrCreate
+        name: elasticsearch-data
+status: {}
