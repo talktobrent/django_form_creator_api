@@ -42,6 +42,5 @@ Work primarily done on models, serializers, api views, and validation
 
 
 ### requires:
-- postgres db exists: `lofty`
 - `pip install phonenumbers`
 
