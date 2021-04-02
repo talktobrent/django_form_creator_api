@@ -11,17 +11,24 @@ Work primarily done on models, serializers, api views, and validation
 ## An example json form:
 ```buildoutcfg
 {
-    "formtitle":
+    'test_title': 
         [
-            {"type": "integer", "name":"my int", "value": 0},
-            {"type": "range", "name":"my range", "min":0, "max":5, "value":2},
-            {"type": "select", "name":"my select",
-                "option": [
-                    {"value":4, "text":"my option", "selected":true},
-                    {"value":5, "text":"five"}
-                ]
-            },
-            {"type":"string", "name":"my string", "placeholder":"write here"}
+            {"type": "integer", "name": "test_int", "value": 6},
+            {"type": "string", "name": "test_str", "placeholder": "put text here", "required": true},
+            {"type": "text", "name": "test_text"},
+            {"type": "tel", "name": "test_tel", "value": "800-000-000", "required": true},
+            {"type": "range", "name": "test_range", "min": 5, "max": 10},
+            {"type": "search", "name": "test_search", "placeholder": "Search here"},
+            {"type": "checkbox", "name": "test_checkbox", "value": False},
+            {
+                "type": "select",
+                "name": "test_select",
+                "option": 
+                    [
+                        {"text": "test_option_1", "value": 1, "selected": false},
+                        {"text": "test_option_2", "value": 2}
+                    ]
+             }
         ]
 }
 ```
